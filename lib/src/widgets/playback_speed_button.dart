@@ -48,15 +48,21 @@ class _PlaybackSpeedButtonState extends State<PlaybackSpeedButton> {
   Widget build(BuildContext context) {
     return PopupMenuButton<double>(
       color: Colors.black54,
-      onSelected: _controller.setPlaybackRate,
+      onSelected: (rate) {
+        _controller.setPlaybackRate(rate);
+        setState(() {});
+      },
       child: Padding(
           padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 8.0),
           child: widget.icon ??
               Container(
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.white, width: 1.5)),
-                padding: EdgeInsets.all(3),
-                child: Text('${_controller.value.playbackRate.toString()}x'),
+                padding: EdgeInsets.symmetric(horizontal: 3, vertical: 2),
+                child: Text(
+                  '${_controller.value.playbackRate.toString()}x',
+                  style: TextStyle(fontSize: 13),
+                ),
               ) /* Image.asset(
               'assets/speedometer.webp',
               package: 'youtube_player_flutter',
