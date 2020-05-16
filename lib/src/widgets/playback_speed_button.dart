@@ -53,7 +53,7 @@ class _PlaybackSpeedButtonState extends State<PlaybackSpeedButton> {
           padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 8.0),
           child: widget.icon ??
               OutlineButton(
-                  child: Text('${_controller.setPlaybackRate}x'),
+                  child: Text('${_controller.setPlaybackRate.toString()}x'),
                   onPressed:
                       () {}) /* Image.asset(
               'assets/speedometer.webp',
