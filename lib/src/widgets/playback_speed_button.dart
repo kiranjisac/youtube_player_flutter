@@ -48,9 +48,10 @@ class _PlaybackSpeedButtonState extends State<PlaybackSpeedButton> {
   Widget build(BuildContext context) {
     return PopupMenuButton<double>(
       color: Colors.black54,
-      onSelected: (rate) {
+      onSelected: (rate) async {
+        await _controller.setPlaybackRate(rate);
+
         setState(() {});
-        _controller.setPlaybackRate(rate);
       },
       child: Padding(
           padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 8.0),
