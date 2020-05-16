@@ -345,24 +345,26 @@ class _YoutubePlayerState extends State<YoutubePlayer> {
             },
           ),
           if (!controller.flags.hideThumbnail)
-            AspectRatio(
-              aspectRatio: _aspectRatio,
-              child: AnimatedOpacity(
-                opacity: controller.value.hasPlayed ? 0 : 1,
-                duration: Duration(milliseconds: 300),
-                child: Image.network(
-                  widget.thumbnailUrl ??
-                      YoutubePlayer.getThumbnail(
-                        videoId: controller.metadata.videoId.isEmpty
-                            ? controller.initialVideoId
-                            : controller.metadata.videoId,
-                      ),
-                  fit: BoxFit.cover,
-                  loadingBuilder: (_, child, progress) => progress == null
-                      ? child
-                      : Container(
-                          color: Colors.black,
+            AnimatedOpacity(
+              opacity: controller.value.hasPlayed ? 0 : 1,
+              duration: Duration(milliseconds: 300),
+              child: AspectRatio(
+                aspectRatio: _aspectRatio,
+                child: Container(
+                  child: Image.network(
+                    widget.thumbnailUrl ??
+                        YoutubePlayer.getThumbnail(
+                          videoId: controller.metadata.videoId.isEmpty
+                              ? controller.initialVideoId
+                              : controller.metadata.videoId,
                         ),
+                    fit: BoxFit.fitWidth,
+                    loadingBuilder: (_, child, progress) => progress == null
+                        ? child
+                        : Container(
+                            color: Colors.black,
+                          ),
+                  ),
                 ),
               ),
             ),

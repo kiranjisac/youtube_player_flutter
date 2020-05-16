@@ -96,8 +96,8 @@ class _PlayPauseButtonState extends State<PlayPauseButton>
     }
     return widget.bufferIndicator ??
         Container(
-          width: 70.0,
-          height: 70.0,
+          width: 60.0,
+          height: 60.0,
           child: CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation(Colors.white),
           ),
