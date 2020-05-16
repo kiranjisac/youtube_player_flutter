@@ -56,7 +56,7 @@ class _PlaybackSpeedButtonState extends State<PlaybackSpeedButton> {
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.white, width: 1.5)),
                 padding: EdgeInsets.all(3),
-                child: Text('${_controller.setPlaybackRate.toString()}x'),
+                child: Text('${_controller.value.playbackRate.toString()}x'),
               ) /* Image.asset(
               'assets/speedometer.webp',
               package: 'youtube_player_flutter',
