@@ -348,19 +348,22 @@ class _YoutubePlayerState extends State<YoutubePlayer> {
             AnimatedOpacity(
               opacity: controller.value.hasPlayed ? 0 : 1,
               duration: Duration(milliseconds: 300),
-              child: Image.network(
-                widget.thumbnailUrl ??
-                    YoutubePlayer.getThumbnail(
-                      videoId: controller.metadata.videoId.isEmpty
-                          ? controller.initialVideoId
-                          : controller.metadata.videoId,
-                    ),
-                fit: BoxFit.cover,
-                loadingBuilder: (_, child, progress) => progress == null
-                    ? child
-                    : Container(
-                        color: Colors.black,
+              child: AspectRatio(
+                aspectRatio: _aspectRatio,
+                child: Image.network(
+                  widget.thumbnailUrl ??
+                      YoutubePlayer.getThumbnail(
+                        videoId: controller.metadata.videoId.isEmpty
+                            ? controller.initialVideoId
+                            : controller.metadata.videoId,
                       ),
+                  fit: BoxFit.cover,
+                  loadingBuilder: (_, child, progress) => progress == null
+                      ? child
+                      : Container(
+                          color: Colors.black,
+                        ),
+                ),
               ),
             ),
           if (!controller.flags.hideControls &&
