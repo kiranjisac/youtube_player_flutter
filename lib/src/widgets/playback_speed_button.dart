@@ -5,6 +5,8 @@
 import 'package:flutter/material.dart';
 
 import '../enums/playback_rate.dart';
+import '../enums/playback_rate.dart';
+import '../enums/playback_rate.dart';
 import '../utils/youtube_player_controller.dart';
 
 /// A widget to display playback speed changing button.
@@ -45,18 +47,22 @@ class _PlaybackSpeedButtonState extends State<PlaybackSpeedButton> {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<double>(
+      color: Colors.black54,
       onSelected: _controller.setPlaybackRate,
       child: Padding(
-        padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 8.0),
-        child: widget.icon ??
-            Image.asset(
+          padding: EdgeInsets.fromLTRB(8.0, 8.0, 0.0, 8.0),
+          child: widget.icon ??
+              OutlineButton(
+                  child: Text('${_controller.setPlaybackRate}x'),
+                  onPressed:
+                      () {}) /* Image.asset(
               'assets/speedometer.webp',
               package: 'youtube_player_flutter',
               width: 20.0,
               height: 20.0,
               color: Colors.white,
-            ),
-      ),
+            ), */
+          ),
       tooltip: 'PlayBack Rate',
       itemBuilder: (context) => [
         _popUpItem('2.0x', PlaybackRate.twice),
@@ -72,8 +78,7 @@ class _PlaybackSpeedButtonState extends State<PlaybackSpeedButton> {
   }
 
   Widget _popUpItem(String text, double rate) {
-    return CheckedPopupMenuItem(
-      checked: _controller.value.playbackRate == rate,
+    return PopupMenuItem(
       child: Text(text),
       value: rate,
     );

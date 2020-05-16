@@ -357,7 +357,7 @@ class _YoutubePlayerState extends State<YoutubePlayer> {
                             ? controller.initialVideoId
                             : controller.metadata.videoId,
                       ),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fitWidth,
                   loadingBuilder: (_, child, progress) => progress == null
                       ? child
                       : Container(
