@@ -61,7 +61,7 @@ class _PlaybackSpeedButtonState extends State<PlaybackSpeedButton> {
                   right: 3,
                   left: 3,
                   top: 1,
-                  bottom: 22,
+                  bottom: 2,
                 ),
                 child: Text(
                   '${_controller.value.playbackRate.toString()}x',
